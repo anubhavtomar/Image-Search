@@ -1,0 +1,11 @@
+.mdl-button.mdl-button--colored {
+	color: white;
+}
+
+.pointer { 
+	cursor: pointer;
+}
+
+.mdl-textfield__label {
+	color: white !important;
+}

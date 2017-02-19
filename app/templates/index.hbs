@@ -1,0 +1,70 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+		{{image-search-bar searchValue=searchValue setData='setData' showLoader=showLoader welcome=welcome}}
+		<div class="mdl-layout-spacer"></div>
+    	<div class='pointer' {{action 'getStarred'}}>
+    		<i class="material-icons">star</i>
+		</div>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+    	{{#if welcome}}
+    		
+    	{{else}}
+	    	{{#if showLoader}}
+	    		{{mdl-spinner}}
+			{{else}}
+		    	{{#if images}}
+					<div class='mdl-grid'>
+						{{#each images.photos.photo as |photo|}}
+							<div class='mdl-cell mdl-cell-4-col'>
+								<div class="demo-card-image mdl-card mdl-shadow--2dp">
+									<img src={{photo.url_n}}  height="250" width="330"/>
+									<div class="mdl-card__title mdl-card--expand"></div>
+										<div class="mdl-card__actions">
+										<span class="demo-card-image__filename pointer" {{action 'likePicture' photo}}>
+											{{#if (eq photo.like false)}}
+												<i class="material-icons">star_border</i>
+											{{else}}
+												<i class="material-icons">star</i>
+											{{/if}}
+										</span>
+									</div>
+								</div>
+							</div>
+						{{/each}}
+					</div>
+				{{/if}}
+
+				<div class='mdl-grid'>
+					{{#each starredImages as |photo|}}
+						<div class='mdl-cell mdl-cell-4-col'>
+							<div class="demo-card-image mdl-card mdl-shadow--2dp">
+								<img src={{photo.source}}  height="250" width="330"/>
+								<div class="mdl-card__title mdl-card--expand"></div>
+									<div class="mdl-card__actions">
+									<span class="demo-card-image__filename pointer">
+										{{#if (eq photo.like false)}}
+											<i class="material-icons">star_border</i>
+										{{else}}
+											<i class="material-icons">star</i>
+										{{/if}}
+									</span>
+								</div>
+							</div>
+						</div>
+					{{else}}
+						{{#unless images}}
+							<div class='mdl-cell mdl-cell-4-col'>
+								Starred list is empty !!
+							</div>
+						{{/unless}}
+					{{/each}}
+				</div>
+			{{/if}}
+		{{/if}}
+    </div>
+  </main>
+</div>
