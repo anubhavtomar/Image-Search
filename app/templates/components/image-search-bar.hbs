@@ -1,5 +1,3 @@
-{{mdl-textfield expandableIcon='search' value=searchValue label='Search'}}
-
-<span {{action 'hitApi'}}>
-	{{mdl-button icon='search'}}
-</span>
+<form {{action "hitApi" on="submit"}}>
+	{{mdl-textfield isExpandable=true expandableIcon='search' value=searchValue}}
+</form>
