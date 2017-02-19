@@ -40,12 +40,12 @@
 
 				<div class='mdl-grid'>
 					{{#each starredImages as |photo|}}
-						<div class='mdl-cell mdl-cell-4-col'>
+						<div class='mdl-cell mdl-cell-4-col' id={{photo.id}}>
 							<div class="demo-card-image mdl-card mdl-shadow--2dp">
 								<img src={{photo.source}}  height="250" width="330"/>
 								<div class="mdl-card__title mdl-card--expand"></div>
 									<div class="mdl-card__actions">
-									<span class="demo-card-image__filename pointer">
+									<span class="demo-card-image__filename pointer" {{action 'likePicture' photo true}}>
 										{{#if (eq photo.like false)}}
 											<i class="material-icons">star_border</i>
 										{{else}}
